@@ -16,22 +16,23 @@
         c.vetado,
     
         
-        ir.id as ir_i_ti_id,
-        ir.fechainiciorenta as ir_i_ti_fechainiciorenta,
-        ir.fechafinrenta as ir_i_ti_fechafinrenta,
-        ir.CLIENTES_documento as ir_i_ti_documentocliente,
+        ir.id as ir_id,
+        ir.fechainiciorenta as ir_fechainiciorenta,
+        ir.fechafinrenta as ir_fechafinrenta,
+        ir.CLIENTES_documento as ir_documentocliente,
         
         
-        i.id as i_ti_id, 
-        i.nombre as i_ti_nombre,
-        i.descripcion as i_ti_descripcion,
-        i.fechalanzamiento as i_ti_fechalanzamiento,
-        i.tarifaxdia as i_ti_tarifaxdia,
-        i.formatorenta as i_ti_formatorenta,
-        i.genero as i_ti_genero,  
+        
+        i.id as ir_i_id, 
+        i.nombre as ir_i_nombre,
+        i.descripcion as ir_i_descripcion,
+        i.fechalanzamiento as ir_i_fechalanzamiento,
+        i.tarifaxdia as ir_i_tarifaxdia,
+        i.formatorenta as ir_i_formatorenta,
+        i.genero as ir_i_genero,  
               
-        ti.id as ti_id,
-        ti.descripcion as ti_descripcion
+        ti.id as ir_i_ti_id,
+        ti.descripcion as ir_i_ti_descripcion
         
         FROM VI_CLIENTES as c 
         left join VI_ITEMRENTADO as ir on c.documento=ir.CLIENTES_documento 
@@ -51,10 +52,10 @@
     </resultMap>
     
     <resultMap type='ItemRentado' id='ItemRentandoResult'>
-        <id property='id' column='i_ti_id'/>
-        <result property="fechainiciorenta" column="i_ti_fechainiciorenta"/>
-        <result property='fechafinrenta' column='i_ti_fechafinrenta'/>   
-        <association   property="item" javaType="Item" columnPrefix="i_ti_" resultMap="edu.eci.pdsw.sampleprj.dao.mybatis.mappers.ItemMapper.ItemResult"></association>
+        <id property='id' column='id'/>
+        <result property="fechainiciorenta" column="fechainiciorenta"/>
+        <result property='fechafinrenta' column='fechafinrenta'/>   
+        <association   property="item" javaType="Item" columnPrefix="i_" resultMap="edu.eci.pdsw.sampleprj.dao.mybatis.mappers.ItemMapper.ItemResult"></association>
     </resultMap>
    
     
@@ -75,27 +76,29 @@
         c.email,
         c.vetado,
     
-   
-        ir.fechainiciorenta as ir_i_ti_fechainiciorenta,
-        ir.fechafinrenta as ir_i_ti_fechafinrenta,
-        ir.CLIENTES_documento as ir_i_ti_documentocliente,
-        ir.id as ir_i_ti_id,
         
-        i.id as i_ti_id, 
-        i.nombre as i_ti_nombre,
-        i.descripcion as i_ti_descripcion,
-        i.fechalanzamiento as i_ti_fechalanzamiento,
-        i.tarifaxdia as i_ti_tarifaxdia,
-        i.formatorenta as i_ti_formatorenta,
-        i.genero as i_ti_genero,  
+        ir.id as ir_id,
+        ir.fechainiciorenta as ir_fechainiciorenta,
+        ir.fechafinrenta as ir_fechafinrenta,
+        ir.CLIENTES_documento as ir_documentocliente,
+        
+        
+        
+        i.id as ir_i_id, 
+        i.nombre as ir_i_nombre,
+        i.descripcion as ir_i_descripcion,
+        i.fechalanzamiento as ir_i_fechalanzamiento,
+        i.tarifaxdia as ir_i_tarifaxdia,
+        i.formatorenta as ir_i_formatorenta,
+        i.genero as ir_i_genero,  
               
-        ti.id as ti_id,
-        ti.descripcion as ti_descripcion
+        ti.id as ir_i_ti_id,
+        ti.descripcion as ir_i_ti_descripcion
         
         FROM VI_CLIENTES as c 
         left join VI_ITEMRENTADO as ir on c.documento=ir.CLIENTES_documento 
         left join VI_ITEMS as i on ir.ITEMS_id=i.id 
-        left join VI_TIPOITEM as ti on i.TIPOITEM_id=ti.id
+        left join VI_TIPOITEM as ti on i.TIPOITEM_id=ti.id 
         WHERE documento=#{id} 
         
     </select> 

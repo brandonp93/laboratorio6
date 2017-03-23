@@ -27,14 +27,15 @@
     </select>
     
     <select parameterType="map" id="consultarItem" resultMap="ItemResult">
+        
         select 
-        i.id as i_ti_id, 
-        i.nombre as i_ti_nombre,
-        i.descripcion as i_ti_descripcion,
-        i.fechalanzamiento as i_ti_fechalanzamiento,
-        i.tarifaxdia as i_ti_tarifaxdia,
-        i.formatorenta as i_ti_formatorenta,
-        i.genero as i_ti_genero,
+        i.id, 
+        i.nombre,
+        i.descripcion,
+        i.fechalanzamiento,
+        i.tarifaxdia,
+        i.formatorenta ,
+        i.genero,
         
         ti.id,
         ti.descripcion
