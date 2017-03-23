@@ -37,8 +37,8 @@
         i.formatorenta ,
         i.genero,
         
-        ti.id,
-        ti.descripcion
+        ti.id as ti_id,
+        ti.descripcion as ti_descripcion 
         
         from VI_ITEMS as i
         left join VI_TIPOITEM as ti on i.TIPOITEM_id=ti.id         
