@@ -23,7 +23,7 @@
         
         
         i.id as i_ti_id, 
-        i.nombre as i_ti_nombrep,
+        i.nombre as i_ti_nombre,
         i.descripcion as i_ti_descripcion,
         i.fechalanzamiento as i_ti_fechalanzamiento,
         i.tarifaxdia as i_ti_tarifaxdia,
@@ -54,7 +54,7 @@
         <id property='id' column='i_ti_id'/>
         <result property="fechainiciorenta" column="i_ti_fechainiciorenta"/>
         <result property='fechafinrenta' column='i_ti_fechafinrenta'/>   
-        <association  columnPrefix="ir_i_" property="item" javaType="Item" resultMap="ItemResult"></association>
+        <association   property="item" javaType="Item" columnPrefix="i_ti_" resultMap="edu.eci.pdsw.sampleprj.dao.mybatis.mappers.ItemMapper.ItemResult"></association>
     </resultMap>
    
     
@@ -63,7 +63,7 @@
                 insert into VI_CLIENTES values (#{id}, #{idit}, #{fechainicio}, #{fechafin})
     </insert>  
     
-         
+     
           
     <select parameterType="map" id="consultarCliente" resultMap="ClienteResult">
             select
@@ -75,15 +75,14 @@
         c.email,
         c.vetado,
     
-        
-        
+   
         ir.fechainiciorenta as ir_i_ti_fechainiciorenta,
         ir.fechafinrenta as ir_i_ti_fechafinrenta,
         ir.CLIENTES_documento as ir_i_ti_documentocliente,
         ir.id as ir_i_ti_id,
         
         i.id as i_ti_id, 
-        i.nombre as i_ti_nombrep,
+        i.nombre as i_ti_nombre,
         i.descripcion as i_ti_descripcion,
         i.fechalanzamiento as i_ti_fechalanzamiento,
         i.tarifaxdia as i_ti_tarifaxdia,
@@ -96,17 +95,10 @@
         FROM VI_CLIENTES as c 
         left join VI_ITEMRENTADO as ir on c.documento=ir.CLIENTES_documento 
         left join VI_ITEMS as i on ir.ITEMS_id=i.id 
-        left join VI_TIPOITEM as ti on i.TIPOITEM_id=ti.i
+        left join VI_TIPOITEM as ti on i.TIPOITEM_id=ti.id
+        WHERE documento=#{id} 
         
     </select> 
-    <resultMap type='Item' id='ItemResult'>
-        <id property='id' column='ti_id'/>
-        <result property='nombre' column='ti_nombre'/>
-        <result property='descripcion' column='ti_fechaLanzamiento'/>  
-        <result property='tarifaxDia' column='ti_tarifaxDia'/>
-	<result property="formatoRenta" column="ti_formatoRenta"/>
-        <result property='genero' column='ti_genero'/> 
-        <association property="tipo" javaType="TipoItem"></association>  
-    </resultMap>           
+         
                 
 </mapper>

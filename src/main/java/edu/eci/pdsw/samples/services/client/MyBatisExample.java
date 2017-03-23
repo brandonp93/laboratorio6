@@ -20,6 +20,7 @@ package edu.eci.pdsw.samples.services.client;
 
 import edu.eci.pdsw.sampleprj.dao.mybatis.mappers.ClienteMapper;
 import edu.eci.pdsw.sampleprj.dao.mybatis.mappers.ItemMapper;
+import edu.eci.pdsw.sampleprj.dao.mybatis.mappers.TipoItemMapper;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.SQLException;
@@ -69,7 +70,7 @@ public class MyBatisExample {
         
         //cm...
         ClienteMapper cm=sqlss.getMapper(ClienteMapper.class);
-        System.out.println(cm.consultarClientes());
+        System.out.println(cm.consultarCliente(1026585664));
         ItemMapper cm1=sqlss.getMapper(ItemMapper.class);
         System.out.println(cm1.consultarItem(5));
         

@@ -13,6 +13,7 @@ import java.util.Date;
  * @author 2106913
  */
 public class Item implements Serializable{
+    
     private TipoItem tipo;
     private int id;
     private String nombre;
@@ -36,7 +37,9 @@ public class Item implements Serializable{
     public Item() {
     }
 
-    
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
     
     
     public TipoItem getTipo() {
@@ -67,10 +70,6 @@ public class Item implements Serializable{
 
     public String getDescripcion() {
         return descripcion;
-    }
-
-    public void setDescrpcion(String descrpcion) {
-        this.descripcion = descrpcion;
     }
 
     public Date getFechaLanzamiento() {
